@@ -10,7 +10,7 @@ echo "Total size of home directory: $(du -sh $HOME | cut -f1)"
 current_time=$(date +'%H:%M')
 logged_at=$(who | grep "$(whoami)" | awk '{print $4}')
 current_timestanp=$(date -d "$current_time" +%s)
-logged_timestamp=$(date -d "$target_time" +%s)
+logged_timestamp=$(date -d "$logged_at" +%s)
 
 difference=$((current_timestamp - logged_timestamp))
 
