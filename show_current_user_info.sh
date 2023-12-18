@@ -7,7 +7,7 @@ echo "Current user: $(whoami)"
 echo "Total size of home directory: $(du -sh $HOME | cut -f1)"
 
 # Print the login time and duration
-echo "Logged in since: $(who -b | awk '{print $3, $4}')"
+echo "Logged in since: $(who | grep "$(whoami)" | awk '{print $4}'"
 echo "Time remaining: $(uptime | awk '{print $3, $4}')"
 
 # Print the last login time
