@@ -7,18 +7,16 @@ echo "Current user: $(whoami)"
 echo "Total size of home directory: $(du -sh $HOME | cut -f1)"
 
 # Print the login time and duration
-#current_time=$(date +'%H:%M')
-logged_at=$(who | grep "$(whoami)" | awk '{print $4}')
-login_time=$(ps -o etime= -p $$) | grep -v ' ')
-#current_timestanp=$(date -d "$current_time" +%s)
-#logged_timestamp=$(date -d "$logged_at" +%s)
+current_time=$(date +"%H:%M" )
+login_time=$(w | grep $(whoami) | awk '{print $4}')
+current_timestamp=$(date -d "$current_time" +%s)
+login_timestamp=$(date -d "$login_time" +%s)
+difference=$(($current_timestamp - $login_timestamp))
+elapsed_time=$(date -u -d @$difference +"%H:%M")
 
-#difference=$((current_timestamp - logged_timestamp))
-
-#logged_time=$(date -u -d @$difference +"%H:%M:%S")
 
 echo "Logged in at: $logged_at"
-echo "Total login time: $login_time"
+echo "Elapsed time: $elapsed_time"
 
 # Print the last login time
 echo "Last login time: $(lastlog -u $(whoami) | awk '{print $4, $5, $6}' | grep -v "Latest")"
