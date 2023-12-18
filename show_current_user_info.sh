@@ -9,6 +9,7 @@ echo "Total size of home directory: $(du -sh $HOME | cut -f1)"
 # Print the login time and duration
 #current_time=$(date +'%H:%M')
 logged_at=$(who | grep "$(whoami)" | awk '{print $4}')
+login_time=$(ps -o etime= -p $$) | grep -v ' ')
 #current_timestanp=$(date -d "$current_time" +%s)
 #logged_timestamp=$(date -d "$logged_at" +%s)
 
@@ -17,7 +18,7 @@ logged_at=$(who | grep "$(whoami)" | awk '{print $4}')
 #logged_time=$(date -u -d @$difference +"%H:%M:%S")
 
 echo "Logged in at: $logged_at"
-echo "Total login time: $(ps -o etime= -p $$) | grep -v ' '"
+echo "Total login time: $login_time"
 
 # Print the last login time
 echo "Last login time: $(lastlog -u $(whoami) | awk '{print $4, $5, $6}' | grep -v "Latest")"
