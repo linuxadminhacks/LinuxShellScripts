@@ -23,4 +23,5 @@ last_login=$(lastlog -u $(whoami) | awk '{print $4, $5, $6}' | grep -v 'Latest')
 echo "Last login time: $last_login"
 
 # Print the last password change time
-echo "Last password change: $(chage -l $(whoami) | grep "Last password change" | awk -F: '{print $2}')"
+last_chgpass=$(chage -l $(whoami) | grep "Last password change" | awk -F: '{print $2}')
+echo "Last password change: $last_chgpass"
