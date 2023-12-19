@@ -15,11 +15,12 @@ difference=$(($current_timestamp - $login_timestamp))
 elapsed_time=$(date -u -d @$difference +"%H:%M")
 
 
-echo "Logged in at: $logged_at"
+echo "Logged in at: $login_time"
 echo "Elapsed time: $elapsed_time"
 
 # Print the last login time
-echo "Last login time: $(lastlog -u $(whoami) | awk '{print $4, $5, $6}' | grep -v "Latest")"
+last_login=$(lastlog -u $(whoami) | awk '{print $4, $5, $6}' | grep -v 'Latest')
+echo "Last login time: $last_login"
 
 # Print the last password change time
 echo "Last password change: $(chage -l $(whoami) | grep "Last password change" | awk -F: '{print $2}')"
