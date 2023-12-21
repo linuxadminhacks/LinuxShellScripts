@@ -3,12 +3,18 @@
 # Ask for username and password
 echo "Please enter a username:"
 read username
-echo "Please enter a password:"
-read password
 
-# Check if username and password are not empty
-if [[ -z "$username" || -z "$password" ]]; then
- echo "Username or password is empty."
+# read -s used to hide sensitive information input
+echo "Please enter a password:"
+read -s password
+
+# Ask for the quota size in GB
+echo "Please enter the quota size in GB:"
+read size
+
+# Check if username, password, and size are not empty
+if [[ -z "$username" || -z "$password" || -z "$size" ]]; then
+ echo "Username, password, or size is empty."
  exit 1
 fi
 
@@ -16,5 +22,5 @@ fi
 useradd -m $username
 echo "$username:$password" | chpasswd
 
-# Set a quota of 20G for the user's home directory
-echo "$username:20G" | edquota -f -
+# Set a quota of the specified size for the user's home directory
+echo "$username:$size"G | edquota -f -
