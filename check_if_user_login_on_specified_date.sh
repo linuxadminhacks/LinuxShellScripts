@@ -17,7 +17,6 @@ fi
 # Check if the target date is in the correct format
 if [[ $target_date =~ ^[0-9]+$ ]]; then
  target_date="$target_date days ago"
- echo "$target_date"
  target_date=$(date -I -d "$target_date")
 fi
 
