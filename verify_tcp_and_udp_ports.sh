@@ -3,7 +3,15 @@
 declare -A tcp_services
 declare -A udp_services
 
-tcp_services=( ["ssh"]="22" ["http"]="80" ["dns"]="53" ["dhcp"]="67" ["ftp"]="21" ["nfs"]="2049" )
+udp_services=( ["dns"]="53" ["dhcp"]="67" )
+
+tcp_services=( ["ssh"]="22"
+               ["http"]="80"
+               ["dns"]="53"
+               ["dhcp"]="67"
+               ["ftp"]="21"
+               ["nfs"]="2049" )
+
 udp_services=( ["dns"]="53" ["dhcp"]="67" )
 
 ip="your.server.ip"
