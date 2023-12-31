@@ -12,8 +12,6 @@ tcp_services=( ["ssh"]="22"
                ["ftp"]="21"
                ["nfs"]="2049" )
 
-udp_services=( ["dns"]="53" ["dhcp"]="67" )
-
 ip="your.server.ip"
 
 for service in "${!tcp_services[@]}"; do
