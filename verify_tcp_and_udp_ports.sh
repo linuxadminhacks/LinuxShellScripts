@@ -5,12 +5,7 @@ declare -A udp_services
 
 udp_services=( ["dns"]="53" ["dhcp"]="67" )
 
-tcp_services=( ["ssh"]="22"
-               ["http"]="80"
-               ["dns"]="53"
-               ["dhcp"]="67"
-               ["ftp"]="21"
-               ["nfs"]="2049" )
+tcp_services=( ["ssh"]="22" ["http"]="80" ["ftp"]="21" )
 
 ip="your.server.ip"
 
