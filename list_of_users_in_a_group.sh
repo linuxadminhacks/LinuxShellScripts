@@ -4,7 +4,7 @@
 read -p "Enter the group name:" group_name
 
 if [ -z "$group_name" ]; then
- echo "Group name not provided."
+ echo "The name of the group is not provided."
  exit 1
 fi
  
@@ -13,6 +13,7 @@ group_info=$(getent group $group_name)
 
 if [ -z "$group_info" ]; then
  echo "Group does not exist."
+ exit 1
 else
  # Extract the group name, ID, and members from the group info line
  group_name=$(echo "$group_info" | cut -d: -f1)
